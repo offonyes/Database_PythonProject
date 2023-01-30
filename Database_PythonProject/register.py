@@ -1,9 +1,11 @@
 class System():
     def __init__(self):
+        #CREATE FOLDERS
         with open("database.txt", "a+") as file:
             pass
         with open("notes.txt", "a+") as file:
             pass
+        #ALLOW TO USE LOGIN
         with open("database.txt", "r") as file:
             self.Accounts = len(file.readlines()
     
