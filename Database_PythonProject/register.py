@@ -5,9 +5,10 @@ class System():
         with open("notes.txt", "a+") as file:
             pass
         with open("database.txt", "r") as file:
-            self.Accounts = len(file.readlines())
+            self.Accounts = len(file.readlines()
     
     def Access_Granted(self):
+        # USER INFO
         print("********** Welcome! **********")
         print("******** USER DETAILS ********")
         print("------------------------------")
@@ -32,6 +33,7 @@ class System():
             self.Access_Granted()
 
     def Change_Note(self):
+        # NOTES CHANGES
         new_notes = ""
         adding_rewriting = (input("Choose 'add','clear' your notes or 'return' to profile.\n")).lower()
         if "add" in adding_rewriting:
@@ -62,10 +64,12 @@ class System():
         change_file.close()      
         self.Change_Note()
     def Login(self):
+        # LOGIN IN YOUR PROFILE
         global name
         success = False
         name = input("Enter your name: ")
         password = input("Enter your password: ")
+        #CHECKING NAME AND PASSWORD
         with open("database.txt","r") as file:
             for dates in file:
                 saved_names,saved_passwords = dates.split(",")
@@ -80,10 +84,12 @@ class System():
             self.Login()
 
     def Registration(self):
+        #REGISTER
         global name
         name_in_list = False
         name = input("Enter your name and password to register.\nEnter your name: ")
         password = input("Enter your password: ")
+        #CHECKING IF NAME EXIST
         with open("database.txt", "r") as file:
             for dates in file:
                 saved_names,saved_passwords = dates.split(",")
@@ -101,6 +107,7 @@ class System():
             self.Access_Granted()
 
     def Change_Password(self):
+        #CHANGE PASSWORD 
         new_database = ""
         password = str(input("For changind password input.\nOld Password: "))
         newpassword = str(input("New Password: "))
@@ -124,8 +131,10 @@ class System():
                 print("Write only 'return'")
 
     def Begin(self):
+        #START CODE 
         choice = (input("Login or Register: ")).lower()
         if choice =="login" and self.Accounts > 0:
+            #CHECKING IF BASE HAVE SOMETHING 
             self.Login()
         elif choice =="register":
             self.Registration()
